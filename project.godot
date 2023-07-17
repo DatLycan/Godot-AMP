@@ -14,7 +14,7 @@ config/name="AMP - AdaptiveMusicPlayer"
 run/main_scene="res://addons/AMP/example/Example.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [debug]
 
@@ -42,3 +42,7 @@ wav={
 "force/max_rate_hz": 44100,
 "force/mono": false
 }
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
