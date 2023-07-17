@@ -1,5 +1,6 @@
 
-# <img src="https://raw.githubusercontent.com/DatLycan/AMP/main/icon.svg" height="26" /> AMP (Adaptive Music Player)
+
+# <img src="https://raw.githubusercontent.com/DatLycan/AMP/main/icon.png" height="26" /> AMP (Adaptive Music Player)
 
 Create adaptive music systems in your game using the `AdaptiveMusicPlayer` and `AudioStemPlayer`.
 > Only compatible with **Godot 4.x**
@@ -62,6 +63,9 @@ amp.add("Group/group_identifier")
 
 > You can also use `StemPlaybackPreset` to define how each stem should be played and assign it to the corresponding `AudioStemPlayer` node.
 
+## Demo
+
+An browser demo using the [example](addons/AMP/example) can be found on [itch.io](https://datlycan.itch.io/amp-demo)
 
 ## License
 
