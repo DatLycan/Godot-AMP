@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvudkl8dff0x3"]
+
+[ext_resource type="AudioStream" uid="uid://cp3jj6fhuy5q" path="res://addons/AMP/example/Sounds/Kick-130BPM-4-4.wav" id="1_5u1q4"]
+[ext_resource type="Script" path="res://addons/AMP/Nodes/AudioStemPlayer.gd" id="1_i304o"]
+
+[node name="Kick" type="AudioStreamPlayer"]
+bus = &"Example Beat"
+script = ExtResource("1_i304o")
+identifier = &"Kick"
+groups = PackedStringArray("ALL", "CORE")
+audio = ExtResource("1_5u1q4")
+metadata/_has_amp = false

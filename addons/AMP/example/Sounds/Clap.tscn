@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4e52dweb3li4"]
+
+[ext_resource type="Script" path="res://addons/AMP/Nodes/AudioStemPlayer.gd" id="1_dg75n"]
+[ext_resource type="AudioStream" uid="uid://dvt23q5g17x14" path="res://addons/AMP/example/Sounds/Clap-130BPM-4-4.wav" id="1_qvj1r"]
+
+[node name="Clap" type="AudioStreamPlayer"]
+bus = &"Example Beat"
+script = ExtResource("1_dg75n")
+identifier = &"Clap"
+groups = PackedStringArray("ALL")
+audio = ExtResource("1_qvj1r")
+metadata/_has_amp = false

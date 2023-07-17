@@ -1,0 +1,427 @@
+[gd_scene load_steps=11 format=3 uid="uid://dt6rl8ugfjbcg"]
+
+[ext_resource type="Script" path="res://addons/AMP/example/Example.gd" id="1_vr7tj"]
+[ext_resource type="Shader" path="res://addons/AMP/example/Background.gdshader" id="2_7ubxg"]
+[ext_resource type="PackedScene" uid="uid://dhblcokig18bt" path="res://addons/AMP/example/ExampleBeat.tscn" id="2_lorey"]
+[ext_resource type="Script" path="res://addons/AMP/example/ExampleVisualizer.gd" id="8_ohqw8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4y4p4"]
+shader = ExtResource("2_7ubxg")
+shader_parameter/dimensions = Vector2(1024, 600)
+shader_parameter/small_stars = 50.0
+shader_parameter/small_stars_far_size = 0.3
+shader_parameter/small_stars_near_size = 0.6
+shader_parameter/large_stars = 8.0
+shader_parameter/large_stars_far_size = 0.5
+shader_parameter/large_stars_near_size = 1.0
+shader_parameter/far_stars_color = Color(0.188235, 0.607843, 0.364706, 1)
+shader_parameter/near_stars_color = Color(1, 1, 1, 1)
+shader_parameter/base_scroll_speed = 0.0
+shader_parameter/additional_scroll_speed = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfd5c"]
+bg_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cvhw"]
+bg_color = Color(0.188235, 0.607843, 0.364706, 1)
+
+[sub_resource type="Theme" id="Theme_4tcpg"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_kfd5c")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_0cvhw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_it0el"]
+bg_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fen71"]
+bg_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[node name="Example" type="CanvasLayer" node_paths=PackedStringArray("amp", "track_name", "clap_button", "kick_button", "snare_button", "text_input", "known_stems", "playing_stems", "numerator_title", "numerator_time", "numerator_index", "denominator_title", "denominator_time", "denominator_index", "measure_title", "measure_time", "measure_index")]
+script = ExtResource("1_vr7tj")
+amp = NodePath("ExampleBeat")
+track_name = NodePath("Display/Control/Panel/TrackName")
+clap_button = NodePath("Display/Control/Panel/StemControls/H/Clap")
+kick_button = NodePath("Display/Control/Panel/StemControls/H/Kick")
+snare_button = NodePath("Display/Control/Panel/StemControls/H/Snare")
+text_input = NodePath("Display/Control/Panel/StemControls/TextInput")
+known_stems = NodePath("Display/Control/Panel/Stems/H/KnownStems/List")
+playing_stems = NodePath("Display/Control/Panel/Stems/H/PlayingStems/List")
+numerator_title = NodePath("Display/Control/Panel/MetricPositions/Numerator")
+numerator_time = NodePath("Display/Control/Panel/MetricPositions/Numerator/Margin/Time")
+numerator_index = NodePath("Display/Control/Panel/MetricPositions/Numerator/Margin/Index")
+denominator_title = NodePath("Display/Control/Panel/MetricPositions/Denominator")
+denominator_time = NodePath("Display/Control/Panel/MetricPositions/Denominator/Margin/Time")
+denominator_index = NodePath("Display/Control/Panel/MetricPositions/Denominator/Margin/Index")
+measure_title = NodePath("Display/Control/Panel/MetricPositions/Measure")
+measure_time = NodePath("Display/Control/Panel/MetricPositions/Measure/Margin/Time")
+measure_index = NodePath("Display/Control/Panel/MetricPositions/Measure/Margin/Index")
+
+[node name="ExampleBeat" parent="." instance=ExtResource("2_lorey")]
+known_identifiers = PackedStringArray("Clap", "Kick", "Snare")
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0.458824)
+material = SubResource("ShaderMaterial_4y4p4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Display" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_4tcpg")
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="Control" type="Control" parent="Display"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="PlaybackControls" type="VBoxContainer" parent="Display/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -97.5
+offset_right = -421.0
+offset_bottom = 97.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 51
+alignment = 2
+
+[node name="Play" type="Button" parent="Display/Control/PlaybackControls"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
+
+[node name="Pause" type="Button" parent="Display/Control/PlaybackControls"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Pause
+"
+
+[node name="Stop" type="Button" parent="Display/Control/PlaybackControls"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Stop
+"
+
+[node name="Panel" type="VBoxContainer" parent="Display/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 25
+
+[node name="TrackName" type="Label" parent="Display/Control/Panel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Track Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stems" type="Panel" parent="Display/Control/Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="H" type="HBoxContainer" parent="Display/Control/Panel/Stems"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="KnownStems" type="VBoxContainer" parent="Display/Control/Panel/Stems/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -1
+
+[node name="Titel" type="Label" parent="Display/Control/Panel/Stems/H/KnownStems"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_it0el")
+text = "Known Stems"
+horizontal_alignment = 1
+
+[node name="List" type="TextEdit" parent="Display/Control/Panel/Stems/H/KnownStems"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_readonly_color = Color(0.823529, 0.823529, 0.823529, 1)
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="PlayingStems" type="VBoxContainer" parent="Display/Control/Panel/Stems/H"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -1
+
+[node name="Titel" type="Label" parent="Display/Control/Panel/Stems/H/PlayingStems"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fen71")
+text = "Playing Stems"
+horizontal_alignment = 1
+
+[node name="List" type="TextEdit" parent="Display/Control/Panel/Stems/H/PlayingStems"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_readonly_color = Color(0.823529, 0.823529, 0.823529, 1)
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="MetricPositions" type="VBoxContainer" parent="Display/Control/Panel"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Numerator" type="Label" parent="Display/Control/Panel/MetricPositions"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "Numerator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="Display/Control/Panel/MetricPositions/Numerator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Time" type="Label" parent="Display/Control/Panel/MetricPositions/Numerator/Margin"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "0.0000"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Display/Control/Panel/MetricPositions/Numerator/Margin"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Progress" type="HBoxContainer" parent="Display/Control/Panel/MetricPositions/Numerator"]
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftBar" type="ProgressBar" parent="Display/Control/Panel/MetricPositions/Numerator/Progress"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+fill_mode = 1
+show_percentage = false
+script = ExtResource("8_ohqw8")
+
+[node name="RightBar" type="ProgressBar" parent="Display/Control/Panel/MetricPositions/Numerator/Progress"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false
+script = ExtResource("8_ohqw8")
+
+[node name="Denominator" type="Label" parent="Display/Control/Panel/MetricPositions"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "Denominator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="Display/Control/Panel/MetricPositions/Denominator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Time" type="Label" parent="Display/Control/Panel/MetricPositions/Denominator/Margin"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "0.0000"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Display/Control/Panel/MetricPositions/Denominator/Margin"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Progress" type="HBoxContainer" parent="Display/Control/Panel/MetricPositions/Denominator"]
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftBar" type="ProgressBar" parent="Display/Control/Panel/MetricPositions/Denominator/Progress"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+fill_mode = 1
+show_percentage = false
+script = ExtResource("8_ohqw8")
+type = 1
+
+[node name="RightBar" type="ProgressBar" parent="Display/Control/Panel/MetricPositions/Denominator/Progress"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false
+script = ExtResource("8_ohqw8")
+type = 1
+
+[node name="Measure" type="Label" parent="Display/Control/Panel/MetricPositions"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "Measure"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="Display/Control/Panel/MetricPositions/Measure"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Time" type="Label" parent="Display/Control/Panel/MetricPositions/Measure/Margin"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "0.0000"
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="Display/Control/Panel/MetricPositions/Measure/Margin"]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Progress" type="HBoxContainer" parent="Display/Control/Panel/MetricPositions/Measure"]
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftBar" type="ProgressBar" parent="Display/Control/Panel/MetricPositions/Measure/Progress"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+fill_mode = 1
+show_percentage = false
+script = ExtResource("8_ohqw8")
+type = 2
+
+[node name="RightBar" type="ProgressBar" parent="Display/Control/Panel/MetricPositions/Measure/Progress"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false
+script = ExtResource("8_ohqw8")
+type = 2
+
+[node name="StemControls" type="VBoxContainer" parent="Display/Control/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="H" type="HBoxContainer" parent="Display/Control/Panel/StemControls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Clap" type="CheckButton" parent="Display/Control/Panel/StemControls/H"]
+layout_mode = 2
+text = "Clap"
+alignment = 1
+
+[node name="Kick" type="CheckButton" parent="Display/Control/Panel/StemControls/H"]
+layout_mode = 2
+text = "Kick
+"
+alignment = 1
+
+[node name="Snare" type="CheckButton" parent="Display/Control/Panel/StemControls/H"]
+layout_mode = 2
+text = "Snare
+"
+alignment = 1
+
+[node name="TextInput" type="LineEdit" parent="Display/Control/Panel/StemControls"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "Group/ALL"
+alignment = 1
+clear_button_enabled = true
+
+[connection signal="denominator_played" from="ExampleBeat" to="." method="_on_denominator_played"]
+[connection signal="measure_played" from="ExampleBeat" to="." method="_on_measure_played"]
+[connection signal="numerator_played" from="ExampleBeat" to="." method="_on_numerator_played"]
+[connection signal="stem_added" from="ExampleBeat" to="." method="_on_stem_added"]
+[connection signal="stem_removed" from="ExampleBeat" to="." method="_on_stem_removed"]
+[connection signal="pressed" from="Display/Control/PlaybackControls/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Display/Control/PlaybackControls/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Display/Control/PlaybackControls/Stop" to="." method="_on_stop_pressed"]
+[connection signal="toggled" from="Display/Control/Panel/StemControls/H/Clap" to="." method="_on_clap_toggled"]
+[connection signal="toggled" from="Display/Control/Panel/StemControls/H/Kick" to="." method="_on_kick_toggled"]
+[connection signal="toggled" from="Display/Control/Panel/StemControls/H/Snare" to="." method="_on_snare_toggled"]
+[connection signal="text_submitted" from="Display/Control/Panel/StemControls/TextInput" to="." method="_on_text_input_text_submitted"]

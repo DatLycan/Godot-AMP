@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhblcokig18bt"]
+
+[ext_resource type="Script" path="res://addons/AMP/Nodes/AdaptiveMusicPlayer.gd" id="1_g675p"]
+[ext_resource type="PackedScene" uid="uid://b4e52dweb3li4" path="res://addons/AMP/example/Sounds/Clap.tscn" id="2_ob14o"]
+[ext_resource type="Script" path="res://addons/AMP/Resources/StemPlaybackPreset.gd" id="2_p4sx7"]
+[ext_resource type="PackedScene" uid="uid://cvudkl8dff0x3" path="res://addons/AMP/example/Sounds/Kick.tscn" id="3_b3q7d"]
+[ext_resource type="PackedScene" uid="uid://b1tbhcy0t1yiu" path="res://addons/AMP/example/Sounds/Snare.tscn" id="4_3fenx"]
+
+[sub_resource type="Animation" id="Animation_1sova"]
+length = 184.615
+loop_mode = 1
+step = 1.84615
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clap")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Kick")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/1/use_blend = true
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Snare")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5i53"]
+_data = {
+"Stems": SubResource("Animation_1sova")
+}
+
+[sub_resource type="Resource" id="Resource_yfms3"]
+script = ExtResource("2_p4sx7")
+insert_position = 22
+start_effect = 11
+end_effect = 11
+default_identifier = &"Group/ALL"
+playback_mode = 0
+default_volume = 0.0
+repeat_on_restart = false
+Add/fade_in_time = 5.0
+Remove/fade_out_time = 4.0
+
+[node name="ExampleBeat" type="AnimationPlayer"]
+root_node = NodePath(".")
+libraries = {
+"DAW": SubResource("AnimationLibrary_p5i53")
+}
+script = ExtResource("1_g675p")
+track_name = &"Example Beat"
+bpm = 130
+global_preset = SubResource("Resource_yfms3")
+print_debug_log = true
+metadata/_is_amp = true
+
+[node name="Clap" parent="." instance=ExtResource("2_ob14o")]
+metadata/_has_amp = true
+
+[node name="Kick" parent="." instance=ExtResource("3_b3q7d")]
+metadata/_has_amp = true
+
+[node name="Snare" parent="." instance=ExtResource("4_3fenx")]
+metadata/_has_amp = true

@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="AMP - AdaptiveMusicPlayer"
+run/main_scene="res://addons/AMP/example/Example.tscn"
+config/features=PackedStringArray("4.0", "Forward Plus")
+boot_splash/show_image=false
+config/icon="res://icon.svg"
+
+[debug]
+
+file_logging/enable_file_logging=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AMP/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
+
+[importer_defaults]
+
+wav={
+"compress/mode": 0,
+"edit/loop_begin": 0,
+"edit/loop_end": -1,
+"edit/loop_mode": 0,
+"edit/normalize": false,
+"edit/trim": true,
+"force/8_bit": false,
+"force/max_rate": false,
+"force/max_rate_hz": 44100,
+"force/mono": false
+}
