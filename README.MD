@@ -35,9 +35,9 @@ It holds instructions for the `AdaptiveMusicPlayer` for how a stem should be pla
  
 **or**
 
-1. Install directly from the Godot Asset Library
+1. ~~Install directly from the Godot Asset Library~~
  
-2. Enable the plugin in your project by going to "Project Settings" > "Plugins" and activate AMP.
+2. ~~Enable the plugin in your project by going to "Project Settings" > "Plugins" and activate AMP.~~
 
 ## Usage
 
@@ -65,7 +65,7 @@ amp.add("Group/group_identifier")
 
 ## Demo
 
-An browser demo using the [example](addons/AMP/example) can be found on [itch.io](https://datlycan.itch.io/amp-demo)
+A browser demo using the [example](addons/AMP/example) can be found on [itch.io](https://datlycan.itch.io/amp-demo)
 
 ## License
 
