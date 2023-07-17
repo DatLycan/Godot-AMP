@@ -1,8 +1,9 @@
-# AMP (Adaptive Music Player) Plugin for Godot 4.x
+# AMP (Adaptive Music Player)
 
 ## Description
 
-AMP (Adaptive Music Player) is a plugin for Godot 4.x that allows you to create adaptive music systems in your game. It introduces two new nodes: AdaptiveMusicPlayer and AudioStemPlayer.
+AMP (Adaptive Music Player) is a plugin for Godot 4.x that allows you to create adaptive music systems in your game. 
+It introduces two new nodes: `AdaptiveMusicPlayer` and `AudioStemPlayer`.
 
 ## Features
 
