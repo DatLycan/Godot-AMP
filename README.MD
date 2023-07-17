@@ -1,3 +1,4 @@
+
 # <img src="https://raw.githubusercontent.com/DatLycan/AMP/main/icon.svg" height="26" /> AMP (Adaptive Music Player)
 
 Create adaptive music systems in your game using the `AdaptiveMusicPlayer` and `AudioStemPlayer`.
@@ -10,6 +11,7 @@ Create adaptive music systems in your game using the `AdaptiveMusicPlayer` and `
 - Add or remove song stems from the track during runtime.
 - Use `StemPlaybackPreset` to define how each stem should be played.
 
+## Nodes
 
 ### AdaptiveMusicPlayer
 
