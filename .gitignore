@@ -13,3 +13,6 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+#AMP specific ignores
+/default_bus_layout.tres

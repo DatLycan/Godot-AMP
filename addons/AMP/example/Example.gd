@@ -29,6 +29,9 @@ const TIMER_CUTOFF: int = 4
 @export var measure_time: Label
 @export var measure_index: Label
 
+func _init() -> void:
+	print("Hint:\n\"Kick\" and \"Snare\" are both in the Group \"CORE\".\nTry typing \"Group/CORE\" in the text input.\n")
+	
 func _ready() -> void:
 	track_name.text = "%s - %sBPM" % [amp.track_name, amp.bpm]
 	for identifier in amp.known_identifiers:

@@ -83,6 +83,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	_generate_audio_bus()
+	_validate_known_identifiers()
 	if Engine.is_editor_hint(): return
 	_connect_signals()
 	if get_autoplay() == DAW_NAME: 
@@ -106,11 +107,6 @@ func _on_child_entered_tree(child: Node) -> void:
 		child.bus = track_name
 		_add_daw_track(child.identifier)
 
-func _on_child_exited_tree(child: Node) -> void:
-	if child.has_meta("_has_amp"):
-		var index: int = known_identifiers.find(child.identifier)
-		if index == -1: return
-		known_identifiers.remove_at(index)
 
 func set_autoplay(daw_name: String = "") -> void:
 	if not Engine.is_editor_hint():
@@ -121,7 +117,6 @@ func set_autoplay(daw_name: String = "") -> void:
 func _connect_signals() -> void:
 	if child_entered_tree.is_connected(_on_child_entered_tree): return
 	child_entered_tree.connect(_on_child_entered_tree)
-	child_exiting_tree.connect(_on_child_exited_tree)
 	animation_finished.connect(func (_daw: StringName): _internal_stop())
 	numerator.signal_parsed.connect(_on_numerator_signal_parsed)
 	denominator.signal_parsed.connect(_on_denominator_signal_parsed)
@@ -190,6 +185,14 @@ func _update_values() -> void:
 	_daw.step = measure_to_sec()
 	_set_metric_positions()
 
+func _validate_known_identifiers() -> void:
+	var validated_identifiers: PackedStringArray = []
+	for stem in get_child_stems():
+		if known_identifiers.has(stem.identifier):
+			validated_identifiers.append(stem.identifier)
+	known_identifiers.clear()
+	known_identifiers.append_array(validated_identifiers)
+	if print_debug_log and not Engine.is_editor_hint(): print("\"%s\" stems: %s" % [track_name, known_identifiers])
 
 func stem_identifier_to_group(identifier: StringName):
 	var grouped_stems: PackedStringArray = []

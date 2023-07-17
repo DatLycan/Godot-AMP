@@ -60,7 +60,6 @@ measure_time = NodePath("Display/Control/Panel/MetricPositions/Measure/Margin/Ti
 measure_index = NodePath("Display/Control/Panel/MetricPositions/Measure/Margin/Index")
 
 [node name="ExampleBeat" parent="." instance=ExtResource("2_lorey")]
-known_identifiers = PackedStringArray("Clap", "Kick", "Snare")
 
 [node name="Background" type="ColorRect" parent="."]
 modulate = Color(0, 0, 0, 0.458824)

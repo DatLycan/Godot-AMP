@@ -70,6 +70,7 @@ script = ExtResource("1_g675p")
 track_name = &"Example Beat"
 bpm = 130
 global_preset = SubResource("Resource_yfms3")
+known_identifiers = PackedStringArray("Clap", "Kick", "Snare")
 print_debug_log = true
 metadata/_is_amp = true
 
