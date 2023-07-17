@@ -10,7 +10,7 @@ Create adaptive music systems in your game using the `AdaptiveMusicPlayer` and `
 - Easily create adaptive music systems in your Godot game.
 - Dynamically change music properties like BPM, time signature, etc., through the inspector.
 - Add or remove song stems from the track during runtime.
-- Use `StemPlaybackPreset` to define how each stem should be played.
+- Use the `StemPlaybackPreset` Resource to define how each stem should be played.
 
 ## Nodes
 
@@ -21,8 +21,7 @@ It holds values that can be changed in the inspector that correspond to song dat
 
 ### AudioStemPlayer
 
-The `AudioStemPlayer` node extends Godot's `AudioStreamPlayer` node and is designed to be used alongside the `AdaptiveMusicPlayer`.  
-An `AudioStemPlayer` represents a different stem (instrument, track, etc.) of your song. 
+The `AudioStemPlayer` node extends Godot's `AudioStreamPlayer` node and is designed to be used alongside the `AdaptiveMusicPlayer`.  An `AudioStemPlayer` represents a different stem (instrument, track, etc.) of your song. 
 It holds instructions for the `AdaptiveMusicPlayer` for how a stem should be played and what should be played.
 
 ## Installation
@@ -50,6 +49,7 @@ It holds instructions for the `AdaptiveMusicPlayer` for how a stem should be pla
  
 4. In your script, you can dynamically add or remove stems from the `AdaptiveMusicPlayer` using the `add(identifier)` and `remove(identifier)` methods, respectively.
 
+ 
  
 ```gdscript
 # Example usage of adding stems with identifiers
