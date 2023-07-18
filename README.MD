@@ -1,5 +1,6 @@
 
 
+
 # <img src="https://raw.githubusercontent.com/DatLycan/AMP/main/icon.png" height="26" /> AMP (Adaptive Music Player)
 
 Create adaptive music systems in your game using the `AdaptiveMusicPlayer` and `AudioStemPlayer`.
@@ -26,11 +27,11 @@ It holds instructions for the `AdaptiveMusicPlayer` for how a stem should be pla
 
 ## Installation
 
-1. Download the AMP plugin from [here](https://github.com/DatLycan/AMP/releases).
+1. Download this repository.
  
-2. Place the plugin directory inside the "addons" folder of your Godot project.
+2. Move ``addons/AMP`` to the ``addons`` folder of your Godot project.
  
-3. Enable the plugin in your project by going to "Project Settings" > "Plugins" and activate AMP.
+3. Enable the plugin in your project by going to ``Project Settings`` > ``Plugins`` and activate ``AMP``.
 
  
 **or**
