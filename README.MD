@@ -70,4 +70,4 @@ A browser demo using the [example](addons/AMP/example) can be found on [itch.io]
 
 ## License
 
-This plugin is released under the [MIT License](LICENSE.txt).
+This plugin is released under the [MIT License](https://github.com/DatLycan/AMP/blob/main/LICENSE).
