@@ -119,7 +119,6 @@ func _get(property: StringName):
 
 
 func _init(_default_identifier: StringName = "Group/ALL", _playback_mode: int = ASP.MODE_PLAYBACK_NO_LOOP, _default_volume: float = default_volume, _position: int = ASP.MODE_INSERT_POS_AT_MEASURE, _effect: int = ASP.MODE_SFX_NONE) -> void:
-	super._init()
 	default_identifier = _default_identifier
 	playback_mode = _playback_mode
 	default_volume = _default_volume
